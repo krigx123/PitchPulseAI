@@ -131,7 +131,9 @@ function PitchHologram() {
   );
 }
 
-export default function HeroSection() {
+interface HeroProps { onAnalyze?: () => void }
+
+export default function HeroSection({ onAnalyze }: HeroProps) {
   return (
     <section
       id="hero"
@@ -227,7 +229,8 @@ export default function HeroSection() {
             className="flex flex-wrap gap-4"
           >
             <a
-              href="#dashboard"
+              href="#"
+              onClick={(e) => { e.preventDefault(); onAnalyze?.(); }}
               className="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#00BFFF] to-[#8B5CF6] rounded-xl font-semibold text-white glow-blue hover:opacity-90 transition-all duration-200"
             >
               Analyze Pitch

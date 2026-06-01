@@ -9,7 +9,9 @@ const navLinks = [
   { label: 'Impact', href: '#impact' },
 ];
 
-export default function Navbar() {
+interface NavbarProps { onAnalyze?: () => void }
+
+export default function Navbar({ onAnalyze }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -67,6 +69,7 @@ export default function Navbar() {
           </a>
           <a
             href="#hero"
+            onClick={(e) => { e.preventDefault(); onAnalyze?.(); }}
             className="px-4 py-2 text-sm font-semibold bg-gradient-to-r from-[#00BFFF] to-[#8B5CF6] rounded-lg text-white hover:opacity-90 transition-opacity glow-blue"
           >
             Analyze Pitch
@@ -103,6 +106,7 @@ export default function Navbar() {
             ))}
             <a
               href="#hero"
+              onClick={(e) => { e.preventDefault(); setMobileOpen(false); onAnalyze?.(); }}
               className="mt-2 px-4 py-2 text-sm font-semibold bg-gradient-to-r from-[#00BFFF] to-[#8B5CF6] rounded-lg text-white text-center"
             >
               Analyze Pitch

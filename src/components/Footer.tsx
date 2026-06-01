@@ -15,7 +15,9 @@ const socials = [
   { icon: Mail, label: 'Email', href: '#' },
 ];
 
-export default function Footer() {
+interface FooterProps { onAnalyze?: () => void }
+
+export default function Footer({ onAnalyze }: FooterProps) {
   return (
     <footer className="relative overflow-hidden border-t border-white/5">
       <div className="absolute inset-0 bg-[#111827]/80" />
@@ -42,7 +44,8 @@ export default function Footer() {
             </div>
             <div className="relative z-10 flex gap-3 shrink-0">
               <a
-                href="#hero"
+                href="#"
+                onClick={(e) => { e.preventDefault(); onAnalyze?.(); }}
                 className="px-6 py-3 bg-gradient-to-r from-[#00BFFF] to-[#8B5CF6] rounded-xl text-white font-semibold text-sm hover:opacity-90 transition-opacity glow-blue"
               >
                 Get Early Access
